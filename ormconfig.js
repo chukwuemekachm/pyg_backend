@@ -27,23 +27,17 @@ const options = {
 const config = options[process.env.NODE_ENV || 'development'];
 
 module.exports = {
-  "type": "postgres",
-  "host": config.HOST,
-  "port": config.PORT,
-  "username": config.USER,
-  "password": config.PASSWORD,
-  "database": config.DATABASE,
-  "logging": false,
-  "entities": [
-    "src/database/entity/*.ts"
-  ],
-  "migrations": [
-    "src/database/migration/*.ts"
-  ],
-  "subscribers": [
-    "src/database/subscriber/*.ts"
-  ],
-  "cli": {
-    "migrationsDir": "src/database/migration"
-  }
+  type: 'postgres',
+  host: config.HOST,
+  port: config.PORT,
+  username: config.USER,
+  password: config.PASSWORD,
+  database: config.DATABASE,
+  logging: false,
+  entities: ['./src/database/entities/*.ts'],
+  migrations: ['./src/database/migration/*.ts'],
+  subscribers: ['./src/database/subscriber/*.ts'],
+  cli: {
+    migrationsDir: 'src/database/migration',
+  },
 };

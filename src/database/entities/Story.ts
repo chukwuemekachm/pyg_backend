@@ -1,5 +1,5 @@
 import { Entity, Column } from 'typeorm';
-import BaseEntity from './BaseEntity';
+import { BaseEntity } from './BaseEntity';
 
 export enum StoryComplexity {
   SMALL = 'SMALL',
@@ -24,7 +24,7 @@ export enum StoryStatus {
 }
 
 @Entity()
-export default class Story extends BaseEntity {
+export class Story extends BaseEntity {
   @Column()
   summary: string;
 

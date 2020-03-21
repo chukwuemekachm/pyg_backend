@@ -1,10 +1,11 @@
-import { createConnection } from 'typeorm';
-import User from './entities/User';
-import Story from './entities/Story';
+import { createConnection, Connection } from 'typeorm';
+import { Story } from './entities/Story';
+import { User } from './entities/User';
+import { BaseEntity } from './entities/BaseEntity';
 import config from './config';
 
-(async function bootstrapDB(): Promise<void> {
-  await createConnection({
+async function bootstrapDB(): Promise<Connection> {
+  return createConnection({
     type: 'postgres',
     synchronize: false,
     host: config.HOST,
@@ -12,6 +13,8 @@ import config from './config';
     username: config.USER,
     password: config.PASSWORD,
     database: config.DATABASE,
-    entities: [User, Story],
+    entities: [BaseEntity, User, Story],
   });
-})();
+}
+
+export default bootstrapDB();
