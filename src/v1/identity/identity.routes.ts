@@ -3,10 +3,12 @@ import Controller from './identity.controller';
 import { permissions } from '../shared/middlewares';
 import { UserRole } from '../../database/entities/User';
 
-const router = Router();
+const identityRouter = Router();
 
-router.post('/user', Controller.loginUser);
-router.post('/admin', Controller.loginUser);
-router.get('/me', permissions([UserRole.USER, UserRole.ADMIN]), Controller.getProfile);
+identityRouter.route('/user').post(Controller.loginUser);
 
-export default router;
+identityRouter.route('/admin').post(Controller.loginUser);
+
+identityRouter.route('/me').get(permissions([UserRole.USER, UserRole.ADMIN]), Controller.getProfile);
+
+export default identityRouter;

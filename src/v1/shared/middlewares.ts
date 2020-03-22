@@ -1,5 +1,6 @@
 import { Request, Response, NextFunction, RequestHandler } from 'express';
-import { decodeToken } from '../../utils/utils';
+import { decodeToken } from './utils';
+import { validateRequest } from '../validators';
 
 export function permissions(roles: string[]): RequestHandler {
   return function validate(req: Request, resp: Response, next: NextFunction): Response | void {
@@ -19,6 +20,28 @@ export function permissions(roles: string[]): RequestHandler {
           message: 'Un-authorized',
         });
       }
+    } catch (error) {
+      return next(error);
+    }
+  };
+}
+
+export function validation(Validator: any): RequestHandler {
+  return async function validate(req: Request, resp: Response, next: NextFunction): Promise<Response | void> {
+    try {
+      const errors: Record<string, string[]> | boolean = await validateRequest(Validator, {
+        ...req.body,
+        ...req.params,
+      });
+
+      if (errors) {
+        return resp.status(400).json({
+          message: 'Some field(s) are failing validation',
+          errors,
+        });
+      }
+
+      return next();
     } catch (error) {
       return next(error);
     }

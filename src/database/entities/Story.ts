@@ -45,4 +45,7 @@ export class Story extends BaseEntity {
 
   @Column()
   createdBy: string;
+
+  @Column()
+  cost: number;
 }

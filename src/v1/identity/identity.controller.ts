@@ -1,7 +1,7 @@
 import { Request, Response, NextFunction } from 'express';
 import { getRepository, Repository, ObjectLiteral } from 'typeorm';
 import { User } from '../../database/entities/User';
-import { compareHash, generateToken } from '../../utils/utils';
+import { compareHash, generateToken } from '../shared/utils';
 
 class IdentityController {
   repository: Repository<ObjectLiteral>;
