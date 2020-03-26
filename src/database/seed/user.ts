@@ -1,5 +1,4 @@
 import 'dotenv/config';
-import { hashString } from '../../v1/shared/utils';
 import { UserRole } from '../entities/User';
 
 export default [

@@ -4,12 +4,16 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
+    "start": "node dist/index.js",
+    "prestart": "rm -rf dist && tsc",
     "dev": "export NODE_ENV=development && nodemon --exec ts-node src/index.ts",
     "test": "jest --runInBand --detectOpenHandles",
     "pretest": "export NODE_ENV=test && yarn typeorm migration:revert && yarn typeorm migration:run",
     "typeorm": "ts-node ./node_modules/typeorm/cli.js",
     "lint:fix": "rm -rf dist && tsc --noEmit && eslint '*/**/*.{js,ts}' --quiet --fix",
-    "lint": "rm -rf dist && tsc --noEmit && eslint '*/**/*.{js,ts}'"
+    "lint": "rm -rf dist && tsc --noEmit && eslint '*/**/*.{js,ts}'",
+    "create:db": "createdb -U postgres -h localhost pyg_dev && createdb -U postgres -h localhost pyg_test",
+    "migrate:db": "yarn typeorm migration:run"
   },
   "husky": {
     "hooks": {
