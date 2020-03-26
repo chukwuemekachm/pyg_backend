@@ -1,0 +1,1673 @@
+{
+	"info": {
+		"_postman_id": "20f6c1cb-3f3d-4461-87ab-08f35e363d03",
+		"name": "PYG Server",
+		"description": "# Introduction\nPYG is an application which provides users with the ability of creating a User Story (i.e ticket or card) which contains information about what kind of task needs to be performed and then the admin will review the User Story, make changes if required. Admin will be able to approve or reject the User story created by the user\n\n# Authentication\nJWT Bearer token is implored for authentication\n\n# Error Codes\n200 - Success\n400 - Bad Request\n401 - Authentication required\n",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Identity",
+			"item": [
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "email",
+									"value": "user@test.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "User12345",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/v1/identity",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"identity"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "(401) Identity",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/api/v1/identity",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"v1",
+										"identity"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=15552000; includeSubDomains"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "33"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"21-dBEoW0UmTF+EGUMaprEp9/8zNNA\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 23 Mar 2020 09:04:10 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Invalid credentials\"\n}"
+						},
+						{
+							"name": "(200) Identity",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "email",
+											"value": "user@test.com",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "User12345",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/v1/identity",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"v1",
+										"identity"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=15552000; includeSubDomains"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "243"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"f3-I1P7m7clw5VmbzSIXvZuQTXLVvw\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 23 Mar 2020 09:06:12 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Login success\",\n    \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjcyMDU3ZWQyLTZkNjAtNGYzOC1iNzkyLWJhZTBhNjk5ZDlmZSIsInJvbGUiOiJVU0VSIiwiaWF0IjoxNTg0OTU0MzcyLCJleHAiOjE1ODUwNDA3NzJ9.UP9Phdg3wNPonvFKDCZrbcA4QjTl1AAFySmjyabfwb8\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Profile",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjcyMDU3ZWQyLTZkNjAtNGYzOC1iNzkyLWJhZTBhNjk5ZDlmZSIsInJvbGUiOiJVU0VSIiwiaWF0IjoxNTg0OTU0MzcyLCJleHAiOjE1ODUwNDA3NzJ9.UP9Phdg3wNPonvFKDCZrbcA4QjTl1AAFySmjyabfwb8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/v1/identity",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"identity"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "(200) Profile - Success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/api/v1/identity",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"v1",
+										"identity"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=15552000; includeSubDomains"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "197"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"c5-bOZ1kzYfCdlYU7AcieuuNYJokpI\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 23 Mar 2020 09:20:12 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": \"72057ed2-6d60-4f38-b792-bae0a699d9fe\",\n    \"email\": \"user@test.com\",\n    \"firstName\": \"John\",\n    \"lastName\": \"Doe\",\n    \"role\": \"USER\",\n    \"createdAt\": \"2020-03-20T16:32:59.263Z\",\n    \"updatedAt\": \"2020-03-20T16:32:59.263Z\"\n}"
+						},
+						{
+							"name": "(401) Profile - No Token",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/api/v1/identity",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"v1",
+										"identity"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=15552000; includeSubDomains"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "34"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"22-wJO9WSaKuEv6l2Cu1VoAPK8aMgA\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 23 Mar 2020 09:18:37 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Needs Authentication\"\n}"
+						},
+						{
+							"name": "(401) Profile - Invalid Token",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/api/v1/identity",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"v1",
+										"identity"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=15552000; includeSubDomains"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "27"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"1b-Ut3PNc/wVrPRb+VoQJjItqUgpJA\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 23 Mar 2020 09:19:37 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Un-authorized\"\n}"
+						}
+					]
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Story",
+			"item": [
+				{
+					"name": "Create Story",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjcyMDU3ZWQyLTZkNjAtNGYzOC1iNzkyLWJhZTBhNjk5ZDlmZSIsInJvbGUiOiJVU0VSIiwiaWF0IjoxNTg0OTU0MzcyLCJleHAiOjE1ODUwNDA3NzJ9.UP9Phdg3wNPonvFKDCZrbcA4QjTl1AAFySmjyabfwb8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "summary",
+									"value": "Red riding hooh",
+									"type": "text"
+								},
+								{
+									"key": "estimatedCompletionTime",
+									"value": "2020-03-23T10:04:52.985Z",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "A good description of the red riding hood's story",
+									"type": "text"
+								},
+								{
+									"key": "cost",
+									"value": "34.59",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/v1/story",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"story"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "(200) Create Story",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "summary",
+											"value": "Red riding hooh",
+											"type": "text"
+										},
+										{
+											"key": "estimatedCompletionTime",
+											"value": "2020-03-23T10:04:52.985Z",
+											"type": "text"
+										},
+										{
+											"key": "description",
+											"value": "A good description of the red riding hood's story",
+											"type": "text"
+										},
+										{
+											"key": "cost",
+											"value": "34.59",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/v1/story",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"v1",
+										"story"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=15552000; includeSubDomains"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "443"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"1bb-3UofRNZ56kEa3DV2OL5XFSLOCTI\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 23 Mar 2020 10:09:14 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Story creation success\",\n    \"story\": {\n        \"summary\": \"Red riding hooh\",\n        \"description\": \"A good description of the red riding hood's story\",\n        \"type\": \"DEVELOPMENT\",\n        \"complexity\": \"MEDIUM\",\n        \"estimatedCompletionTime\": \"2020-03-23T10:04:52.985Z\",\n        \"cost\": \"34.59\",\n        \"status\": \"PENDING\",\n        \"createdBy\": \"72057ed2-6d60-4f38-b792-bae0a699d9fe\",\n        \"id\": \"e6525310-5259-4e64-b1cb-4fd57505ad54\",\n        \"createdAt\": \"2020-03-23T10:09:14.867Z\",\n        \"updatedAt\": \"2020-03-23T10:09:14.867Z\"\n    }\n}"
+						},
+						{
+							"name": "(401) Create Story",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/api/v1/story",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"v1",
+										"story"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=15552000; includeSubDomains"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "27"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"1b-Ut3PNc/wVrPRb+VoQJjItqUgpJA\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 23 Mar 2020 09:55:27 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Un-authorized\"\n}"
+						},
+						{
+							"name": "(400) Create Story",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:3000/api/v1/story",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"v1",
+										"story"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=15552000; includeSubDomains"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "276"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"114-DU+0Zppt4iV8ADhVvw3cMpSBHB4\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 23 Mar 2020 10:07:55 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Some field(s) are failing validation\",\n    \"errors\": {\n        \"summary\": [\n            \"summary must be longer than or equal to 5 characters\",\n            \"summary must be a string\"\n        ],\n        \"cost\": [\n            \"cost is not a valid decimal number.\"\n        ],\n        \"estimatedCompletionTime\": [\n            \"estimatedCompletionTime must be a ISOString\"\n        ]\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Update Story",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImEzYmJjNjVlLWUzZWQtNDY0Ni1hNWVkLTg3YmRkNjY0ZjVjNyIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTU4NDk1ODU3OSwiZXhwIjoxNTg1MDQ0OTc5fQ.T5hIHHgDw5_YpiqzPW0wevXeGSaQ1GrQskO2a5CzBVo",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "summary",
+									"value": "Implement PaperTrail",
+									"type": "text"
+								},
+								{
+									"key": "cost",
+									"value": "80.50",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/v1/story/39d7ae02-cb34-42b5-8c49-7e68a9a231b6",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"story",
+								"39d7ae02-cb34-42b5-8c49-7e68a9a231b6"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "(401) Update Story",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/api/v1/story/39d7ae02-cb34-42b5-8c49-7e68a9a231b6",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"v1",
+										"story",
+										"39d7ae02-cb34-42b5-8c49-7e68a9a231b6"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=15552000; includeSubDomains"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "27"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"1b-Ut3PNc/wVrPRb+VoQJjItqUgpJA\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 23 Mar 2020 10:40:57 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Un-authorized\"\n}"
+						},
+						{
+							"name": "(200) Update Story",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "summary",
+											"value": "Implement PaperTrail",
+											"type": "text"
+										},
+										{
+											"key": "cost",
+											"value": "80.50",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/v1/story/39d7ae02-cb34-42b5-8c49-7e68a9a231b6",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"v1",
+										"story",
+										"39d7ae02-cb34-42b5-8c49-7e68a9a231b6"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=15552000; includeSubDomains"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "404"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"194-870gHr3bPGhhwI8Pd9L22lNSnzs\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 23 Mar 2020 11:06:13 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Story modification success\",\n    \"story\": {\n        \"id\": \"39d7ae02-cb34-42b5-8c49-7e68a9a231b6\",\n        \"createdAt\": \"2020-03-21T23:42:22.641Z\",\n        \"updatedAt\": \"2020-03-23T11:06:13.850Z\",\n        \"summary\": \"Implement PaperTrail\",\n        \"description\": \"\",\n        \"type\": \"DEVELOPMENT\",\n        \"complexity\": \"MEDIUM\",\n        \"status\": \"APPROVED\",\n        \"estimatedCompletionTime\": \"2020-03-21T21:50:27.983Z\",\n        \"createdBy\": \"72057ed2-6d60-4f38-b792-bae0a699d9fe\",\n        \"cost\": \"80.50\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Process Story",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImEzYmJjNjVlLWUzZWQtNDY0Ni1hNWVkLTg3YmRkNjY0ZjVjNyIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTU4NDk1ODU3OSwiZXhwIjoxNTg1MDQ0OTc5fQ.T5hIHHgDw5_YpiqzPW0wevXeGSaQ1GrQskO2a5CzBVo",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "status",
+									"value": "COMPLETED",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/v1/story/56205bce-3311-49f1-b2ee-f86ef65942bc",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"story",
+								"56205bce-3311-49f1-b2ee-f86ef65942bc"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "(401) Process Story",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/api/v1/story/56205bce-3311-49f1-b2ee-f86ef65942bc",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"v1",
+										"story",
+										"56205bce-3311-49f1-b2ee-f86ef65942bc"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=15552000; includeSubDomains"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "27"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"1b-Ut3PNc/wVrPRb+VoQJjItqUgpJA\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 23 Mar 2020 10:28:23 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Un-authorized\"\n}"
+						},
+						{
+							"name": "(400) Process Story",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/api/v1/story/56205bce-3311-49f1-b2ee-f86ef65942bc",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"v1",
+										"story",
+										"56205bce-3311-49f1-b2ee-f86ef65942bc"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=15552000; includeSubDomains"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "108"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"6c-ShAVPNiLfWTSSd1xgDXi2cpA0G4\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 23 Mar 2020 10:30:29 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Some field(s) are failing validation\",\n    \"errors\": {\n        \"status\": [\n            \"status must be a valid enum value\"\n        ]\n    }\n}"
+						},
+						{
+							"name": "(200) Process Story",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "status",
+											"value": "COMPLETED",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/v1/story/56205bce-3311-49f1-b2ee-f86ef65942bc",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"v1",
+										"story",
+										"56205bce-3311-49f1-b2ee-f86ef65942bc"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=15552000; includeSubDomains"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "398"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"18e-yPQwv9ZpLIOrfCPliwi6/2S+wm8\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 23 Mar 2020 10:32:35 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Story modification success\",\n    \"story\": {\n        \"id\": \"56205bce-3311-49f1-b2ee-f86ef65942bc\",\n        \"createdAt\": \"2020-03-22T10:14:03.210Z\",\n        \"updatedAt\": \"2020-03-23T10:32:35.788Z\",\n        \"summary\": \"User repository\",\n        \"description\": \"\",\n        \"type\": \"DEVELOPMENT\",\n        \"complexity\": \"MEDIUM\",\n        \"status\": \"COMPLETED\",\n        \"estimatedCompletionTime\": \"2020-08-21T21:50:27.983Z\",\n        \"createdBy\": \"72057ed2-6d60-4f38-b792-bae0a699d9fe\",\n        \"cost\": \"350\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Preview Story",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImEzYmJjNjVlLWUzZWQtNDY0Ni1hNWVkLTg3YmRkNjY0ZjVjNyIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTU4NDk1ODU3OSwiZXhwIjoxNTg1MDQ0OTc5fQ.T5hIHHgDw5_YpiqzPW0wevXeGSaQ1GrQskO2a5CzBVo",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "status",
+									"value": "APPROVED",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/v1/story/56205bce-3311-49f1-b2ee-f86ef65942bc",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"story",
+								"56205bce-3311-49f1-b2ee-f86ef65942bc"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "(404) Preview Story",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "status",
+											"value": "APPROVED",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/v1/story/a5ed97b4-00cc-487e-842a-a9b03393d2a4",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"v1",
+										"story",
+										"a5ed97b4-00cc-487e-842a-a9b03393d2a4"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=15552000; includeSubDomains"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "75"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"4b-XUNhTDCTuQKkl9DMpSwicHnIPOc\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 23 Mar 2020 10:20:01 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Story with id: a5ed97b4-00cc-487e-842a-a9b03393d2a4 not found\"\n}"
+						},
+						{
+							"name": "(401) Preview Story",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/api/v1/story/56205bce-3311-49f1-b2ee-f86ef65942bc",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"v1",
+										"story",
+										"56205bce-3311-49f1-b2ee-f86ef65942bc"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=15552000; includeSubDomains"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "27"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"1b-Ut3PNc/wVrPRb+VoQJjItqUgpJA\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 23 Mar 2020 10:13:49 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Un-authorized\"\n}"
+						},
+						{
+							"name": "(200) Preview Story",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "status",
+											"value": "APPROVED",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/v1/story/56205bce-3311-49f1-b2ee-f86ef65942bc",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"v1",
+										"story",
+										"56205bce-3311-49f1-b2ee-f86ef65942bc"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=15552000; includeSubDomains"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "846"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"34e-nmNVef+iKx2MsOY/io5EyZrLACQ\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 23 Mar 2020 10:23:47 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"story\": {\n        \"id\": \"56205bce-3311-49f1-b2ee-f86ef65942bc\",\n        \"createdAt\": \"2020-03-22T10:14:03.210Z\",\n        \"updatedAt\": \"2020-03-22T10:14:33.722Z\",\n        \"summary\": \"User repository\",\n        \"description\": \"\",\n        \"type\": \"DEVELOPMENT\",\n        \"complexity\": \"MEDIUM\",\n        \"status\": \"APPROVED\",\n        \"estimatedCompletionTime\": \"2020-08-21T21:50:27.983Z\",\n        \"createdBy\": {\n            \"id\": \"72057ed2-6d60-4f38-b792-bae0a699d9fe\",\n            \"firstName\": \"John\",\n            \"lastName\": \"Doe\",\n            \"email\": \"user@test.com\"\n        },\n        \"cost\": \"350\",\n        \"history\": [\n            {\n                \"id\": \"fd023ecf-71b0-4b25-8e41-3b76efb07165\",\n                \"status\": \"PENDING\",\n                \"createdBy\": \"72057ed2-6d60-4f38-b792-bae0a699d9fe\",\n                \"storyId\": \"56205bce-3311-49f1-b2ee-f86ef65942bc\",\n                \"createdAt\": \"2020-03-22T10:14:03.231Z\"\n            },\n            {\n                \"id\": \"1c5a044a-33d4-4121-a342-aa26e9812bfb\",\n                \"status\": \"APPROVED\",\n                \"createdBy\": \"a3bbc65e-e3ed-4646-a5ed-87bdd664f5c7\",\n                \"storyId\": \"56205bce-3311-49f1-b2ee-f86ef65942bc\",\n                \"createdAt\": \"2020-03-22T10:14:33.733Z\"\n            }\n        ]\n    }\n}"
+						}
+					]
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImEzYmJjNjVlLWUzZWQtNDY0Ni1hNWVkLTg3YmRkNjY0ZjVjNyIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTU4NDgzNDg5MywiZXhwIjoxNTg0OTIxMjkzfQ.2Y4gaOMuSBQ9xEmgeUJ2tAf990fd4cy4nDYmtEb-fOo",
+						"type": "string"
+					}
+				]
+			},
+			"protocolProfileBehavior": {}
+		}
+	],
+	"protocolProfileBehavior": {}
+}
