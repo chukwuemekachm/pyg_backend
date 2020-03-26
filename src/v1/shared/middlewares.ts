@@ -20,19 +20,27 @@ export function permissions(roles: string[]): RequestHandler {
           message: 'Un-authorized',
         });
       }
+
+      return resp.status(401).json({
+        message: 'Needs Authentication',
+      });
     } catch (error) {
       return next(error);
     }
   };
 }
 
-export function validation(Validator: any): RequestHandler {
+export function validation(Validator: any, isUpdate = false): RequestHandler {
   return async function validate(req: Request, resp: Response, next: NextFunction): Promise<Response | void> {
     try {
-      const errors: Record<string, string[]> | boolean = await validateRequest(Validator, {
-        ...req.body,
-        ...req.params,
-      });
+      const errors: Record<string, string[]> | boolean = await validateRequest(
+        Validator,
+        {
+          ...req.body,
+          ...req.params,
+        },
+        isUpdate,
+      );
 
       if (errors) {
         return resp.status(400).json({

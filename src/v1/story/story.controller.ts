@@ -1,24 +1,21 @@
 import { Request, Response, NextFunction } from 'express';
 import { getRepository, Repository, ObjectLiteral } from 'typeorm';
-import { Story, StoryType, StoryComplexity, StoryStatus } from '../../database/entities/Story';
-import { StoryHistory } from '../../database/entities/StoryHistory';
-import { UserRole, User } from '../../database/entities/User';
+import { StoryType, StoryComplexity, StoryStatus } from '../../database/entities/Story';
+import { UserRole } from '../../database/entities/User';
 
 class StoryController {
-  repository: Repository<ObjectLiteral>;
-  entity: any;
-  historyRepository: Repository<ObjectLiteral>;
-  historyEntity: any;
-  userRepository: Repository<ObjectLiteral>;
+  private repository: Repository<ObjectLiteral>;
+  private entity: any;
+  private historyRepository: Repository<ObjectLiteral>;
+  private historyEntity: any;
+  private userRepository: Repository<ObjectLiteral>;
 
   constructor(storyEntity, historyEntity, userEntity) {
-    setTimeout(() => {
-      this.repository = getRepository(storyEntity);
-      this.entity = storyEntity;
-      this.historyRepository = getRepository(historyEntity);
-      this.historyEntity = historyEntity;
-      this.userRepository = getRepository(userEntity);
-    }, 2000);
+    this.repository = getRepository(storyEntity);
+    this.entity = storyEntity;
+    this.historyRepository = getRepository(historyEntity);
+    this.historyEntity = historyEntity;
+    this.userRepository = getRepository(userEntity);
   }
 
   createStory = async (req: Request, resp: Response, next: NextFunction): Promise<Response | void> => {
@@ -41,7 +38,7 @@ class StoryController {
       story.type = type;
       story.complexity = complexity;
       story.estimatedCompletionTime = estimatedCompletionTime;
-      story.cost = cost;
+      story.cost = parseFloat(cost);
       story.status = StoryStatus.PENDING;
       story.createdBy = id;
 
@@ -89,7 +86,7 @@ class StoryController {
         await this.repository.save(story);
         this.trackStoryHistory(status, storyId, id);
 
-        return resp.status(404).json({
+        return resp.status(200).json({
           message: 'Story modification success',
           story,
         });
@@ -116,7 +113,7 @@ class StoryController {
           this.userRepository.findOne(story.createdBy, { select: ['id', 'firstName', 'lastName', 'email'] }),
         ]);
 
-        return resp.status(404).json({
+        return resp.status(200).json({
           story: {
             ...story,
             history,
@@ -129,12 +126,55 @@ class StoryController {
         message: `Story with id: ${storyId} not found`,
       });
     } catch (error) {
-      console.log(error);
       return next(error);
     }
   };
 
-  trackStoryHistory = (status: StoryStatus, storyId: string, createdBy: string): void => {
+  updateStory = async (req: Request, resp: Response, next: NextFunction): Promise<Response | void> => {
+    try {
+      const {
+        body: {
+          summary,
+          description = '',
+          type,
+          complexity,
+          estimatedCompletionTime,
+          cost,
+          _user: { id, role },
+        },
+        params: { storyId },
+      } = req;
+
+      const story = await this.repository.findOne(storyId);
+
+      if (story) {
+        if (story.createdBy === id || role === UserRole.ADMIN) {
+          story.summary = summary || story.summary;
+          story.description = description || story.description;
+          story.type = type || story.type;
+          story.complexity = complexity || story.complexity;
+          story.estimatedCompletionTime = estimatedCompletionTime || story.estimatedCompletionTime;
+          story.cost = cost || story.cost;
+
+          await this.repository.save(story);
+          this.trackStoryHistory(story.status, story.id, id);
+
+          return resp.status(200).json({
+            message: 'Story modification success',
+            story,
+          });
+        }
+      }
+
+      return resp.status(404).json({
+        message: `Story with id: ${storyId} not found`,
+      });
+    } catch (error) {
+      return next(error);
+    }
+  };
+
+  private trackStoryHistory = (status: StoryStatus, storyId: string, createdBy: string): void => {
     const storyHistory = new this.historyEntity();
     storyHistory.storyId = storyId;
     storyHistory.createdBy = createdBy;
@@ -143,4 +183,4 @@ class StoryController {
   };
 }
 
-export default new StoryController(Story, StoryHistory, User);
+export default StoryController;

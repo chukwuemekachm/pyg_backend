@@ -1,15 +1,12 @@
 import { Request, Response, NextFunction } from 'express';
 import { getRepository, Repository, ObjectLiteral } from 'typeorm';
-import { User } from '../../database/entities/User';
 import { compareHash, generateToken } from '../shared/utils';
 
 class IdentityController {
-  repository: Repository<ObjectLiteral>;
+  private repository: Repository<ObjectLiteral>;
 
   constructor(userEntity) {
-    setTimeout(() => {
-      this.repository = getRepository(userEntity);
-    }, 2000);
+    this.repository = getRepository(userEntity);
   }
 
   loginUser = async (req: Request, resp: Response, next: NextFunction): Promise<Response | void> => {
@@ -64,4 +61,4 @@ class IdentityController {
   };
 }
 
-export default new IdentityController(User);
+export default IdentityController;

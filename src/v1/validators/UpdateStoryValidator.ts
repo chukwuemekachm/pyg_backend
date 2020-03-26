@@ -1,4 +1,4 @@
-import { Length, IsOptional, IsString, IsDateString, IsEnum, IsDecimal } from 'class-validator';
+import { Length, IsOptional, IsString, IsDateString, IsEnum, IsDecimal, IsUUID } from 'class-validator';
 import { StoryType, StoryComplexity, StoryStatus } from '../../database/entities/Story';
 
 interface StoryPayload {
@@ -8,17 +8,18 @@ interface StoryPayload {
   complexity: StoryComplexity;
   estimatedCompletionTime: string;
   cost: number;
-  status: StoryStatus;
+  storyId: string;
 }
 
-export class StoryValidator implements StoryPayload {
+export class UpdateStoryValidator implements StoryPayload {
+  @IsOptional()
   @IsString()
   @Length(5, 250)
   summary: string;
 
+  @IsOptional()
   @IsString()
   @Length(5, 3000)
-  @IsOptional()
   description: string;
 
   @IsOptional()
@@ -33,19 +34,24 @@ export class StoryValidator implements StoryPayload {
   @IsEnum(StoryComplexity)
   complexity: StoryComplexity;
 
+  @IsOptional()
   @IsDecimal()
   cost: number;
 
+  @IsOptional()
   @IsDateString()
   estimatedCompletionTime: string;
 
-  constructor({ summary, description, type, complexity, estimatedCompletionTime, cost, status }: StoryPayload) {
+  @IsUUID()
+  storyId: string;
+
+  constructor({ summary, description, type, complexity, estimatedCompletionTime, cost, storyId }: StoryPayload) {
     this.summary = summary;
     this.description = description;
     this.type = type;
     this.complexity = complexity;
     this.estimatedCompletionTime = estimatedCompletionTime;
-    this.cost = Number(cost);
-    this.status = status;
+    this.cost = cost ? Number(cost) : cost;
+    this.storyId = storyId;
   }
 }

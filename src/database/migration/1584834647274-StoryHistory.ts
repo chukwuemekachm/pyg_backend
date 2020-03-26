@@ -64,6 +64,6 @@ export class StoryHistory1584834647274 implements MigrationInterface {
   }
 
   public async down(queryRunner: QueryRunner): Promise<any> {
-    await queryRunner.dropTable('question');
+    await queryRunner.dropTable('storyhistory');
   }
 }

@@ -3,7 +3,7 @@ import { validate } from 'class-validator';
 export async function validateRequest(
   Validator: any,
   payload: Record<string, any>,
-  action?: string,
+  isUpdate = false,
 ): Promise<boolean | Record<string, string[]>> {
   const resource = new Validator(payload);
   let validationErrors = {};
@@ -14,7 +14,7 @@ export async function validateRequest(
 
   const errors = await validate(resource, {
     validationError: { target: false },
-    skipMissingProperties: action === 'update' ? true : false,
+    skipMissingProperties: isUpdate,
   });
 
   if (errors.length === 0) {

@@ -18,4 +18,4 @@ async function bootstrapDB(): Promise<Connection> {
   });
 }
 
-export default bootstrapDB();
+export default bootstrapDB;
