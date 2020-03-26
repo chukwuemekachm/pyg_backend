@@ -40,7 +40,3 @@ jobs:
       - run:
           name: TEST
           command: yarn test
-
-      - run:
-          name: UPLOAD COVERAGE
-          command: yarn test:cov
