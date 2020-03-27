@@ -5,7 +5,7 @@
   "license": "MIT",
   "scripts": {
     "start": "node dist/index.js",
-    "prestart": "rm -rf dist && tsc",
+    "build": "rm -rf dist && tsc",
     "dev": "export NODE_ENV=development && nodemon --exec ts-node src/index.ts",
     "test": "jest --runInBand --detectOpenHandles",
     "pretest": "export NODE_ENV=test && yarn typeorm migration:revert && yarn typeorm migration:run",
